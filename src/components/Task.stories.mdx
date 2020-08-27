@@ -1,29 +1,17 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { taskData, actionsData } from "./Task2.stories2";
 
 import Task from "./Task";
 
 <Meta title="Task" component={Task} />
 
-const taskData = {
-  id: "1",
-  title: "Test Task",
-  state: "TASK_INBOX",
-  updatedAt: new Date(2018, 0, 1, 9, 0),
-};
-
-const actionsData = {
-  onPinTask: action("onPinTask"),
-  onArchiveTask: action("onArchiveTask"),
-};
-
 # Task
 
-## Displays a task that may be also be archived or pinned
+You can add whatever Markdown you want to this documentation.
 
-Use an avatar for attributing actions or content to specific users. The user's name should _always_ be present when using Avatar – either printed beside the avatar or in a tooltip.
+## Displays a Default Task
 
-<Preview>
-<Story name="standard"
+<Story name="Default"
     args={{
       id: "1",
       title: "Test Task",
@@ -31,6 +19,41 @@ Use an avatar for attributing actions or content to specific users. The user's n
       updatedAt: new Date(2018, 0, 1, 9, 0),
     }}
     >
-  {(args) => <Task task={{ ...args }}  />}
+  {(args) => <Task task={{ ...taskData }} {...actionsData}  />}
 </Story>
-</Preview>
+
+## Displays a Pinned Task
+
+<Story name="Pinned"
+    args={{
+      id: "1",
+      title: "Test Task",
+      state:"TASK_INBOX",
+      updatedAt: new Date(2018, 0, 1, 9, 0),
+    }}
+    >
+  {(args) => <Task task={{ ...taskData, state: "TASK_PINNED" }} {...actionsData} />}
+</Story>
+
+## Displays a Archived Task
+
+<Story name="Archived"
+    args={{
+      id: "1",
+      title: "Test Task",
+      state:"TASK_INBOX",
+      updatedAt: new Date(2018, 0, 1, 9, 0),
+    }}
+    >
+  {(args) => <Task task={{ ...taskData, state: "TASK_ARCHIVED" }} {...actionsData} />}
+</Story>
+
+
+export const Pinned = () => (
+  <Task task={{ ...taskData, state: "TASK_PINNED" }} {...actionsData} />
+);
+
+export const Archived = () => (
+  <Task task={{ ...taskData, state: "TASK_ARCHIVED" }} {...actionsData} />
+);
+
