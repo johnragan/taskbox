@@ -4,16 +4,33 @@ import Task from "./Task";
 
 <Meta title="Task" component={Task} />
 
+const taskData = {
+  id: "1",
+  title: "Test Task",
+  state: "TASK_INBOX",
+  updatedAt: new Date(2018, 0, 1, 9, 0),
+};
+
+const actionsData = {
+  onPinTask: action("onPinTask"),
+  onArchiveTask: action("onArchiveTask"),
+};
+
 # Task
 
 ## Displays a task that may be also be archived or pinned
 
 Use an avatar for attributing actions or content to specific users. The user's name should _always_ be present when using Avatar – either printed beside the avatar or in a tooltip.
 
-<Story name="standard">
-  <Task
-    id="1"
-    title="Test Task"
-    state="TASK_INBOX"
-  />
+<Preview>
+<Story name="standard"
+    args={{
+      id: "1",
+      title: "Test Task",
+      state:"TASK_INBOX",
+      updatedAt: new Date(2018, 0, 1, 9, 0),
+    }}
+    >
+  {(args) => <Task task={{ ...args }}  />}
 </Story>
+</Preview>
