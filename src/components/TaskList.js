@@ -5,6 +5,10 @@ import Task from "./Task";
 import { connect } from "react-redux";
 import { archiveTask, pinTask } from "../lib/redux";
 
+/** 
+- Use a TaskList for showing tasks a list of tasks.
+- This is human written JSDoc and automatically imported from TaskList.js.
+ */
 export function PureTaskList({ loading, tasks, onPinTask, onArchiveTask }) {
   const events = {
     onPinTask,
@@ -60,9 +64,23 @@ export function PureTaskList({ loading, tasks, onPinTask, onArchiveTask }) {
 }
 
 PureTaskList.propTypes = {
+  /**
+    Use the loading state to indicate that the data TaskList needs is still 
+    loading (human written).
+    
+    */
   loading: PropTypes.bool,
+  /**
+    The list of tasks to be displayed (human written).
+    */
   tasks: PropTypes.arrayOf(Task.propTypes.task).isRequired,
+  /**
+   * The action to be injected for when a task is pinned (human written).
+   */
   onPinTask: PropTypes.func.isRequired,
+  /**
+   * The action to be injected for when a task is archived (human written).
+   */
   onArchiveTask: PropTypes.func.isRequired,
 };
 

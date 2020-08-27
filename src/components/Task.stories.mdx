@@ -1,0 +1,19 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+
+import Task from "./Task";
+
+<Meta title="Task" component={Task} />
+
+# Task
+
+## Displays a task that may be also be archived or pinned
+
+Use an avatar for attributing actions or content to specific users. The user's name should _always_ be present when using Avatar – either printed beside the avatar or in a tooltip.
+
+<Story name="standard">
+  <Task
+    id="1"
+    title="Test Task"
+    state="TASK_INBOX"
+  />
+</Story>

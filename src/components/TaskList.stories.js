@@ -1,13 +1,19 @@
 import React from "react";
 
 import { PureTaskList } from "./TaskList";
-import { taskData, actionsData } from "./Task.stories";
+import { taskData, actionsData } from "./Task2.stories2";
 
 export default {
   component: PureTaskList,
   title: "TaskList",
   decorators: [(story) => <div style={{ padding: "3rem" }}>{story()}</div>],
   excludeStories: /.*Data$/,
+
+  parameters: {
+    component: PureTaskList,
+    componentSubtitle:
+      "Displays a list of tasks.  Can add any other human created documentation.",
+  },
 };
 
 export const defaultTasksData = [
